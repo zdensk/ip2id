@@ -4,4 +4,6 @@ A simple Windows tray application that displays the last segment of the machine'
 Egy egyszerű Windows tray alkalmazás, amely megjeleníti a gép aktuális IPv4 címének utolsó szegmensét az értesítési területen ikon formájában.
 
 <img width="504" height="368" alt="image" src="https://github.com/user-attachments/assets/f3286fe0-aa88-4e72-a2fb-ee322ca1b360" />
+<img width="550" height="344" alt="image" src="https://github.com/user-attachments/assets/19f6ee50-dfaf-4c42-86f6-e5d2a91a3b06" />
+
 
