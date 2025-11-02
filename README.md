@@ -1,5 +1,5 @@
 # ip2id
-A simple Windows tray application that displays the last segment of the machine's current IPv4 address as an icon in the notification area.
+A simple Windows tray application that displays the last segment of the current IPv4 address as an icon in the notification area.
 
 Egy egyszerű Windows tray alkalmazás, amely megjeleníti a gép aktuális IPv4 címének utolsó szegmensét az értesítési területen ikon formájában.
 
