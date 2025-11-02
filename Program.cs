@@ -30,7 +30,7 @@ namespace ip2id
             private ToolStripMenuItem lightIconMenuItem;
             private ToolStripMenuItem darkIconMenuItem;
             private ToolStripMenuItem exitMenuItem;
-            private ToolStripMenuItem adapterMenu; // Új menü az adapterekhez
+            private ToolStripMenuItem adapterMenu; 
 
             private const string registryRunKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
             private const string startupValueName = "IPv4InTray";
@@ -46,7 +46,7 @@ namespace ip2id
                 var headerItem = new ToolStripMenuItem("IP2ID v0.3 | zdnsk") { Enabled = false };
                 menu.Items.Add(headerItem);
 
-                startWithWindowsMenuItem = new ToolStripMenuItem("Indítás rendszerindítással")
+                startWithWindowsMenuItem = new ToolStripMenuItem("IndÃ­tÃ¡s rendszerindÃ­tÃ¡ssal")
                 {
                     CheckOnClick = true,
                     Checked = IsStartupEnabled()
@@ -54,12 +54,12 @@ namespace ip2id
                 startWithWindowsMenuItem.Click += StartWithWindowsMenuItem_Click;
                 menu.Items.Add(startWithWindowsMenuItem);
 
-                lightIconMenuItem = new ToolStripMenuItem("Világos ikon")
+                lightIconMenuItem = new ToolStripMenuItem("VilÃ¡gos ikon")
                 {
                     CheckOnClick = true,
                     Checked = !GetUseDarkIconFromRegistry()
                 };
-                darkIconMenuItem = new ToolStripMenuItem("Sötét ikon")
+                darkIconMenuItem = new ToolStripMenuItem("SÃ¶tÃ©t ikon")
                 {
                     CheckOnClick = true,
                     Checked = GetUseDarkIconFromRegistry()
@@ -67,19 +67,18 @@ namespace ip2id
                 lightIconMenuItem.Click += IconColorMenuItem_Click;
                 darkIconMenuItem.Click += IconColorMenuItem_Click;
 
-                var iconColorMenu = new ToolStripMenuItem("Ikon szín");
+                var iconColorMenu = new ToolStripMenuItem("Ikon szÃ­n");
                 iconColorMenu.DropDownItems.Add(lightIconMenuItem);
                 iconColorMenu.DropDownItems.Add(darkIconMenuItem);
                 menu.Items.Add(iconColorMenu);
 
-                // Új menü a fizikai adapterek számára
-                adapterMenu = new ToolStripMenuItem("Hálózati adapter választás");
+                adapterMenu = new ToolStripMenuItem("HÃ¡lÃ³zati adapter vÃ¡lasztÃ¡s");
                 PopulateAdapterMenu();
                 menu.Items.Add(adapterMenu);
 
                 menu.Items.Add(new ToolStripSeparator());
 
-                exitMenuItem = new ToolStripMenuItem("Kilépés");
+                exitMenuItem = new ToolStripMenuItem("KilÃ©pÃ©s");
                 exitMenuItem.Click += ExitMenuItem_Click;
                 menu.Items.Add(exitMenuItem);
 
@@ -104,7 +103,7 @@ namespace ip2id
 
                 if (adapters.Count == 0)
                 {
-                    var noAdapterItem = new ToolStripMenuItem("Nincs elérhetõ adapter") { Enabled = false };
+                    var noAdapterItem = new ToolStripMenuItem("Nincs elÃ©rhetÃµ adapter") { Enabled = false };
                     adapterMenu.DropDownItems.Add(noAdapterItem);
                     return;
                 }
@@ -125,14 +124,12 @@ namespace ip2id
             {
                 if (sender is ToolStripMenuItem clickedItem)
                 {
-                    // Levesszük az összes többi jelölést
                     foreach (ToolStripMenuItem item in adapterMenu.DropDownItems)
                     {
                         if (item != clickedItem)
                             item.Checked = false;
                     }
 
-                    // Beállítjuk az új adaptert, mentjük, majd újraindulunk
                     string newAdapter = clickedItem.Text;
                     SetSelectedAdapterNameToRegistry(newAdapter);
                     RestartApplication();
@@ -153,7 +150,7 @@ namespace ip2id
                 string adapterName = GetSelectedAdapterNameFromRegistry();
                 if (string.IsNullOrEmpty(adapterName))
                 {
-                    // Alapértelmezett viselkedés: elsõ aktív fizikai adapter
+    
                     var defaultAdapter = NetworkInterface.GetAllNetworkInterfaces()
                         .FirstOrDefault(ni => ni.OperationalStatus == OperationalStatus.Up &&
                                               (ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -295,4 +292,5 @@ namespace ip2id
             return icon;
         }
     }
+
 }
